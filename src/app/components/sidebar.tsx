@@ -3,22 +3,18 @@ import React from "react";
 const stepsArray = [
   {
     number: 1,
-    step: "step 1",
     description: "your info",
   },
   {
     number: 2,
-    step: "step 2",
     description: "select plan",
   },
   {
     number: 3,
-    step: "step 3",
     description: "add-ons",
   },
   {
     number: 4,
-    step: "step 4",
     description: "summary",
   },
 ];
@@ -46,7 +42,7 @@ export const Sidebar = ({ setActiveStep, activeStep }:Props) => {
           </div>
           <div>
             <p className="uppercase text-[13px] text-[#adbeff] font-thin">
-              {step.step}
+              step {step.number}
             </p>
             <h1 className="uppercase font-bold text-white text-[14px]">
               {step.description}

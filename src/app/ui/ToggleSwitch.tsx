@@ -1,6 +1,11 @@
 import React from "react";
 
-export const ToggleSwitch = ({ isYearly, onToggle }) => {
+type Boolean = {
+    isYearly: Boolean,
+    onToggle: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const ToggleSwitch = ({ isYearly, onToggle }: Boolean) => {
   return (
     <div className="bg-gray-100 p-2 rounded-lg flex items-center justify-center space-x-4 w-[100%] mt-[2rem]">
       <span
@@ -14,7 +19,7 @@ export const ToggleSwitch = ({ isYearly, onToggle }) => {
       <button
         type="button"
         onClick={() => onToggle(!isYearly)}
-        className="relative w-12 h-6 flex items-center bg-blue-900 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
+        className="relative w-12 h-5 flex items-center bg-blue-900 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
         aria-pressed={isYearly}
       >
         <span className="sr-only">Toggle Pricing Plan</span>

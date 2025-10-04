@@ -5,6 +5,7 @@ import { Info } from "./components/info";
 import { Plan } from "./components/plan";
 import { Sidebar } from "./components/sidebar";
 import { Addon } from "./components/addon";
+import { Summary } from "./components/summary";
 
 export default function Home() {
   const [activeStep, setActiveStep] = useState(1);
@@ -25,9 +26,22 @@ export default function Home() {
             setIsYearly={setIsYearly}
           />
         )}
-        {activeStep === 3 && <Addon setActiveStep={setActiveStep}
-            activeStep={activeStep} isYearly={isYearly}
-            setIsYearly={setIsYearly} />}
+        {activeStep === 3 && (
+          <Addon
+            setActiveStep={setActiveStep}
+            activeStep={activeStep}
+            isYearly={isYearly}
+            setIsYearly={setIsYearly}
+          />
+        )}
+        {activeStep === 4 && (
+          <Summary
+            setActiveStep={setActiveStep}
+            activeStep={activeStep}
+            isYearly={isYearly}
+            setIsYearly={setIsYearly}
+          />
+        )}
       </div>
     </div>
   );

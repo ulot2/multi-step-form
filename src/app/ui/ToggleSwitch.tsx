@@ -22,7 +22,7 @@ export const ToggleSwitch = ({ isYearly, onToggle }: Boolean) => {
         className="relative w-12 h-5 flex items-center bg-blue-900 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
         aria-pressed={isYearly}
       >
-        <span className="sr-only">Toggle Pricing Plan</span>
+        {/* <span className="sr-only">Toggle Pricing Plan</span> */}
         <span
           className={`absolute left-1 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform ${
             isYearly ? "translate-x-6" : "translate-x-0"

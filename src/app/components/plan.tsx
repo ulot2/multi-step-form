@@ -36,9 +36,12 @@ export const Plan = ({
   setActiveStep,
   activeStep,
   isYearly,
-  setIsYearly,
+  setIsYearly, selectedPlan, setSelectedPlan
 }: Props) => {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
+  // const handleInputChange = (e) => {
+  //   setSelectedPlan(e.target.value)
+  // }
 
   return (
     <div className="w-[70%] pt-7 px-10">
@@ -66,8 +69,8 @@ export const Plan = ({
                     type="radio"
                     name="planType"
                     id={plan.name}
-                    checked={selectedPlan === plan.name}
-                    onChange={() => setSelectedPlan(plan.name)}
+                    checked={selectedPlan === plan}
+                    onChange={() => setSelectedPlan(plan)}
                   />
                   <div>
                     <h5 className="font-bold text-[#02295a]">{plan.name}</h5>

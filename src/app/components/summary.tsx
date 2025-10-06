@@ -1,7 +1,14 @@
 import React from "react";
 import { ConfirmButton, PrevButton } from "../ui/button";
 
-export const Summary = ({ setActiveStep, activeStep, isYearly, setIsYearly }) => {
+export const Summary = ({
+  setActiveStep,
+  activeStep,
+  isYearly,
+  selectedPlan,
+  selectedAddOn,
+  setSelectedAddOn,
+}) => {
   return (
     <div className="w-[70%] pt-7 px-10">
       <h1 className="text-[#02295a] font-bold text-2xl">Finishing up</h1>
@@ -13,7 +20,8 @@ export const Summary = ({ setActiveStep, activeStep, isYearly, setIsYearly }) =>
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-[#02295a] font-bold text-[14px]">
-                Arcade (<span>{isYearly ? "Yearly" : "Monthly"}</span>)
+                {selectedPlan.name} (
+                <span>{isYearly ? "Yearly" : "Monthly"}</span>)
               </h1>
               <button
                 type="button"
@@ -23,19 +31,24 @@ export const Summary = ({ setActiveStep, activeStep, isYearly, setIsYearly }) =>
                 Change
               </button>
             </div>
-            <span className="text-[#02295a] font-bold text-[14px]">${isYearly ? "90/yr":"9/mo"}</span>
-          </div>
-          <hr className="mt-[1.1rem] border border-[#d6d9e6]" />
-          <div className="flex justify-between mt-[0.8rem]">
-            <p className="text-[#9699ab] text-[13px]">Online service</p>
-            <span className="text-[#02295a] text-[13px] font-semibold">
-              +${isYearly ? "10/yr":"1/mo"}
+            <span className="text-[#02295a] font-bold text-[14px]">
+              $
+              {isYearly
+                ? `${selectedPlan.yearly}/yr`
+                : `${selectedPlan.monthly}/mo`}
             </span>
           </div>
+          <hr className="mt-[1.1rem] border border-[#d6d9e6]" />
+            <div className="flex justify-between mt-[0.8rem]">
+              <p className="text-[#9699ab] text-[13px]">{selectedAddOn.name}</p>
+              <span className="text-[#02295a] text-[13px] font-semibold">
+                +${isYearly ? "10/yr" : "1/mo"}
+              </span>
+            </div>
           <div className="flex justify-between mt-[0.8rem]">
-            <p className="text-[#9699ab] text-[13px]">Larger storage</p>
+            <p className="text-[#9699ab] text-[13px]">{selectedAddOn.name}</p>
             <span className="text-[#02295a] text-[13px] font-semibold">
-              +${isYearly ? "20/yr":"2/mo"}
+              +${isYearly ? "20/yr" : "2/mo"}
             </span>
           </div>
         </div>
@@ -44,7 +57,7 @@ export const Summary = ({ setActiveStep, activeStep, isYearly, setIsYearly }) =>
             Total (<span>{isYearly ? "per year" : "per month"}</span>)
           </p>
           <span className="text-[#473dff] text-[16px] font-semibold">
-            +${isYearly ? "120/yr":"12/mo"}
+            +${isYearly ? "120/yr" : "12/mo"}
           </span>
         </div>
         <div className="absolute bottom-5 left-0 right-0 flex justify-between">

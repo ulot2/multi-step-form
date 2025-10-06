@@ -10,6 +10,8 @@ import { Summary } from "./components/summary";
 export default function Home() {
   const [activeStep, setActiveStep] = useState(1);
   const [isYearly, setIsYearly] = useState<Boolean>(true);
+  const [selectedPlan, setSelectedPlan] = useState({});
+  const [selectedAddOn, setSelectedAddOn] = useState([]);
 
   return (
     <div className="h-[100vh] bg-[#eef5ff] flex items-center justify-center">
@@ -24,6 +26,8 @@ export default function Home() {
             activeStep={activeStep}
             isYearly={isYearly}
             setIsYearly={setIsYearly}
+            selectedPlan={selectedPlan}
+            setSelectedPlan={setSelectedPlan}
           />
         )}
         {activeStep === 3 && (
@@ -31,7 +35,8 @@ export default function Home() {
             setActiveStep={setActiveStep}
             activeStep={activeStep}
             isYearly={isYearly}
-            setIsYearly={setIsYearly}
+            selectedAddOn={selectedAddOn}
+            setSelectedAddOn={setSelectedAddOn}
           />
         )}
         {activeStep === 4 && (
@@ -39,7 +44,9 @@ export default function Home() {
             setActiveStep={setActiveStep}
             activeStep={activeStep}
             isYearly={isYearly}
-            setIsYearly={setIsYearly}
+            selectedPlan={selectedPlan}
+            selectedAddOn={selectedAddOn}
+            setSelectedAddOn={setSelectedAddOn}
           />
         )}
       </div>

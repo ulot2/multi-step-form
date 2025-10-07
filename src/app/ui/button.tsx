@@ -17,8 +17,8 @@ export const PrevButton = ({setActiveStep, activeStep}:Props) => {
   )
 }
 
-export const ConfirmButton = () => {
+export const ConfirmButton = ({setActiveStep}:Props) => {
   return (
-    <button className='bg-[#473dff] hover:bg-[#174a8b] text-[#fff] p-[0.4rem] text-[13px] w-[100px] rounded cursor-pointer transition' type='button'>Confirm</button>
+    <button onClick={() => setActiveStep(0)} className='bg-[#473dff] hover:bg-[#174a8b] text-[#fff] p-[0.4rem] text-[13px] w-[100px] rounded cursor-pointer transition' type='button'>Confirm</button>
   )
 }

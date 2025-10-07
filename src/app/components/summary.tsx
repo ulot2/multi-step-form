@@ -39,30 +39,26 @@ export const Summary = ({
             </span>
           </div>
           <hr className="mt-[1.1rem] border border-[#d6d9e6]" />
-            <div className="flex justify-between mt-[0.8rem]">
-              <p className="text-[#9699ab] text-[13px]">{selectedAddOn.name}</p>
+          {selectedAddOn.map((addOn) => (
+            <div key={addOn.name} className="flex justify-between mt-[0.8rem]">
+              <p className="text-[#9699ab] text-[13px]">{addOn.name}</p>
               <span className="text-[#02295a] text-[13px] font-semibold">
-                +${isYearly ? "10/yr" : "1/mo"}
+                +${isYearly ? `${addOn.yearly}/yr` : `${addOn.monthly}/mo`}
               </span>
             </div>
-          <div className="flex justify-between mt-[0.8rem]">
-            <p className="text-[#9699ab] text-[13px]">{selectedAddOn.name}</p>
-            <span className="text-[#02295a] text-[13px] font-semibold">
-              +${isYearly ? "20/yr" : "2/mo"}
-            </span>
-          </div>
+          ))}
         </div>
         <div className="flex justify-between mt-[0.8rem] m-auto w-[90%]">
           <p className="text-[#9699ab] text-[13px]">
             Total (<span>{isYearly ? "per year" : "per month"}</span>)
           </p>
           <span className="text-[#473dff] text-[16px] font-semibold">
-            +${isYearly ? "120/yr" : "12/mo"}
+            +${isYearly ? `${selectedPlan.yearly + selectedAddOn.yearly}` : `${selectedPlan.monthly + 1}`}
           </span>
         </div>
         <div className="absolute bottom-5 left-0 right-0 flex justify-between">
           <PrevButton setActiveStep={setActiveStep} activeStep={activeStep} />
-          <ConfirmButton />
+          <ConfirmButton setActiveStep={setActiveStep} activeStep={activeStep} />
         </div>
       </div>
     </div>

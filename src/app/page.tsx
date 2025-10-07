@@ -6,6 +6,7 @@ import { Plan } from "./components/plan";
 import { Sidebar } from "./components/sidebar";
 import { Addon } from "./components/addon";
 import { Summary } from "./components/summary";
+import { Confirm } from "./components/confirm";
 
 export default function Home() {
   const [activeStep, setActiveStep] = useState(1);
@@ -48,6 +49,9 @@ export default function Home() {
             selectedAddOn={selectedAddOn}
             setSelectedAddOn={setSelectedAddOn}
           />
+        )}
+        {activeStep === 0 && (
+          <Confirm setActiveStep={setActiveStep} activeStep={activeStep} />
         )}
       </div>
     </div>

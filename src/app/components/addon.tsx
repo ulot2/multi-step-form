@@ -25,7 +25,7 @@ const addOns = [
 export const Addon = ({ setActiveStep, activeStep, isYearly, selectedAddOn, setSelectedAddOn}) => {
   // const handleChange = () => {
   //   if (selectedAddOn === addOns) {
-  //     addOns.filter()
+      
   //   }
   // }
 
@@ -42,7 +42,7 @@ export const Addon = ({ setActiveStep, activeStep, isYearly, selectedAddOn, setS
               <div key={addOn.name} className="mb-[1rem]">
                 <label className="flex justify-between items-center outline outline-[1px] outline-[#9699ab] hover:outline-[#473dff] has-[:checked]:outline-[#473dff] has-[:checked]:bg-[#fafbff] transition rounded-sm p-[10px] cursor-pointer">
                   <div className="flex gap-[10px] ml-[0.7rem]">
-                    <input className="cursor-pointer" type="checkbox" name={addOn.name} id={addOn.name} onChange={() => setSelectedAddOn((prev) => ([...prev, addOn]))} />
+                    <input className="cursor-pointer" type="checkbox" name={addOn.name} id={addOn.name} onChange={() => setSelectedAddOn((prev) => ([...prev, addOn])) } />
                     <div>
                       <h6 className="text-[#02295a] font-bold text-[14px]">
                         {addOn.name}

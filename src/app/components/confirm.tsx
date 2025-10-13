@@ -1,6 +1,11 @@
 import Image from 'next/image'
 
-export const Confirm = () => {
+type Props = {
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  activeStep: number;
+};
+
+export const Confirm = ({ setActiveStep, activeStep }: Props) => {
   return (
     <div className='h-full w-[70%] pt-7 px-10 flex flex-col justify-center items-center'>
         <Image src="/images/icon-thank-you.svg" width={60} height={60} alt='icon-thank-you' />

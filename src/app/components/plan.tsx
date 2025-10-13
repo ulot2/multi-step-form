@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import Image from "next/image";
 import { ToggleSwitch } from "../ui/ToggleSwitch";
 import { NextButton, PrevButton } from "../ui/button";
@@ -27,21 +25,34 @@ const plans = [
   },
 ];
 
+type PlanType = {
+  name: string;
+  monthly: number;
+  yearly: number;
+  img: string;
+};
+
+type Errors = {
+  plan?: string;
+};
+
 type Props = {
   activeStep: number;
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  isYearly: boolean;
+  setIsYearly: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedPlan: Partial<PlanType>;
+  handlePlanSelect: (plan: PlanType) => void;
+  errors: Errors;
+  handleNextStep: () => void;
 };
 
 export const Plan = ({
   setActiveStep,
   activeStep,
   isYearly,
-  setIsYearly, selectedPlan, setSelectedPlan
+  setIsYearly, selectedPlan, handlePlanSelect, errors, handleNextStep
 }: Props) => {
-
-  // const handleInputChange = (e) => {
-  //   setSelectedPlan(e.target.value)
-  // }
 
   return (
     <div className="w-[70%] pt-7 px-10">
@@ -69,8 +80,8 @@ export const Plan = ({
                     type="radio"
                     name="planType"
                     id={plan.name}
-                    checked={selectedPlan === plan}
-                    onChange={() => setSelectedPlan(plan)}
+                    checked={selectedPlan.name === plan.name}
+                    onChange={() => handlePlanSelect(plan)}
                   />
                   <div>
                     <h5 className="font-bold text-[#02295a]">{plan.name}</h5>
@@ -88,10 +99,12 @@ export const Plan = ({
             ))}
           </div>
           <ToggleSwitch isYearly={isYearly} onToggle={setIsYearly} />
+          <p className="text-[red] text-[12px]">{errors.plan}</p>
+          
         </form>
         <div className="absolute bottom-5 left-0 right-0 flex justify-between">
           <PrevButton setActiveStep={setActiveStep} activeStep={activeStep} />
-          <NextButton setActiveStep={setActiveStep} activeStep={activeStep} />
+          <NextButton handleNextStep={handleNextStep}/>
         </div>
       </div>
     </div>

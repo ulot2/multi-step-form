@@ -24,18 +24,20 @@ type Props = {
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const Sidebar = ({ setActiveStep, activeStep }:Props) => {
+export const Sidebar = ({ setActiveStep, activeStep}: Props) => {
   return (
     <div className='bg-[url("/images/bg-sidebar-desktop.svg")] bg-contain bg-cover h-[100%] w-[27%] rounded-lg p-[1.5rem]'>
       {stepsArray.map((step) => (
         <div
           key={step.number}
-          onClick={() => setActiveStep(step.number)}
+          
           className="flex justify-start items-center gap-[10px] mb-[1rem] cursor-pointer"
         >
           <div
             className={`border border-[1px] border-[#bfe2fd] h-[35px] w-[35px] flex justify-center items-center rounded-[50%] text-[13px] ${
-              activeStep === step.number ? "bg-[#bfe2fd] text-[#02295a]" : "text-[#bfe2fd]"
+              activeStep === step.number
+                ? "bg-[#bfe2fd] text-[#02295a]"
+                : "text-[#bfe2fd]"
             } `}
           >
             {step.number}

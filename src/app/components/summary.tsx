@@ -1,14 +1,28 @@
 import React from "react";
 import { ConfirmButton, PrevButton } from "../ui/button";
 
+type Addon = {
+  name: string;
+  description: string;
+  monthly: number;
+  yearly: number;
+};
+
+type Props = {
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  activeStep: number;
+  isYearly: boolean;
+  selectedPlan: any;
+  selectedAddOn: Addon[];
+};
+
 export const Summary = ({
   setActiveStep,
   activeStep,
   isYearly,
   selectedPlan,
   selectedAddOn,
-  setSelectedAddOn,
-}) => {
+}: Props) => {
   return (
     <div className="w-[70%] pt-7 px-10">
       <h1 className="text-[#02295a] font-bold text-2xl">Finishing up</h1>
@@ -53,12 +67,12 @@ export const Summary = ({
             Total (<span>{isYearly ? "per year" : "per month"}</span>)
           </p>
           <span className="text-[#473dff] text-[16px] font-semibold">
-            +${isYearly ? `${selectedPlan.yearly + selectedAddOn.yearly}` : `${selectedPlan.monthly + 1}`}
+            +${isYearly ? `${selectedPlan.yearly + selectedAddOn.reduce((sum, addon) => sum + addon.yearly, 0)}` : `${selectedPlan.monthly + selectedAddOn.reduce((sum, addon) => sum + addon.monthly, 0)}`}
           </span>
         </div>
         <div className="absolute bottom-5 left-0 right-0 flex justify-between">
           <PrevButton setActiveStep={setActiveStep} activeStep={activeStep} />
-          <ConfirmButton setActiveStep={setActiveStep} activeStep={activeStep} />
+          <ConfirmButton setActiveStep={setActiveStep} />
         </div>
       </div>
     </div>

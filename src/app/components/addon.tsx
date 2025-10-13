@@ -22,12 +22,31 @@ const addOns = [
   },
 ];
 
-export const Addon = ({ setActiveStep, activeStep, isYearly, selectedAddOn, setSelectedAddOn}) => {
-  // const handleChange = () => {
-  //   if (selectedAddOn === addOns) {
-      
-  //   }
-  // }
+type Addon = {
+  name: string;
+  description: string;
+  monthly: number;
+  yearly: number;
+}
+
+type FormData = {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  plan: any;
+  addOns: Addon[];
+}
+
+interface Props {
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  activeStep: number;
+  isYearly: boolean;
+  formData: FormData;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+  handleNextStep: () => void;
+}
+
+export const Addon = ({ setActiveStep, activeStep, isYearly, formData, setFormData, handleNextStep}: Props) => {
 
   return (
     <div className="w-[70%] pt-7 px-10">
@@ -38,11 +57,31 @@ export const Addon = ({ setActiveStep, activeStep, isYearly, selectedAddOn, setS
       <div className="relative pb-19">
         <form>
           <div>
-            {addOns.map((addOn) => (
-              <div key={addOn.name} className="mb-[1rem]">
-                <label className="flex justify-between items-center outline outline-[1px] outline-[#9699ab] hover:outline-[#473dff] has-[:checked]:outline-[#473dff] has-[:checked]:bg-[#fafbff] transition rounded-sm p-[10px] cursor-pointer">
+            {addOns.map((addOn) => {
+              const isAlreadySelected = !!formData.addOns.find((item) => item.name === addOn.name)
+              
+              const handleAddOnSelect = () => {
+                setFormData(prevData => {
+                const isCurrentlySelected = !!prevData.addOns.find((item) => item.name === addOn.name)
+                if (isCurrentlySelected) {
+                  return {
+                    ...prevData,
+                    addOns: prevData.addOns.filter((item) => item.name !== addOn.name)
+                  }
+                } else {
+                  return {
+                    ...prevData,
+                    addOns: [...prevData.addOns, addOn]
+                  }
+                }
+              })
+              }
+
+              return (
+                <div key={addOn.name} className="mb-[1rem]">
+                <label className="flex justify-between items-center outline outline-[#9699ab] hover:outline-[#473dff] has-[:checked]:outline-[#473dff] has-[:checked]:bg-[#fafbff] transition rounded-sm p-[10px] cursor-pointer">
                   <div className="flex gap-[10px] ml-[0.7rem]">
-                    <input className="cursor-pointer" type="checkbox" name={addOn.name} id={addOn.name} onChange={() => setSelectedAddOn((prev) => ([...prev, addOn])) } />
+                    <input className="cursor-pointer" type="checkbox" name={addOn.name} id={addOn.name} checked={isAlreadySelected} onChange={handleAddOnSelect} />
                     <div>
                       <h6 className="text-[#02295a] font-bold text-[14px]">
                         {addOn.name}
@@ -57,12 +96,13 @@ export const Addon = ({ setActiveStep, activeStep, isYearly, selectedAddOn, setS
                   </p>
                 </label>
               </div>
-            ))}
+              )
+            } )}
           </div>
         </form>
         <div className="absolute bottom-5 left-0 right-0 flex justify-between">
           <PrevButton setActiveStep={setActiveStep} activeStep={activeStep} />
-          <NextButton setActiveStep={setActiveStep} activeStep={activeStep} />
+          <NextButton handleNextStep={handleNextStep} />
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import { useState} from "react";
 import type React from "react";
+import type { FormData, PlanTypes} from "./types/form";
 
 import { Info } from "./components/info";
 import { Plan } from "./components/plan";
@@ -17,25 +18,20 @@ type FormErrors = {
   plan: string;
 };
 
-type PlanTypes = {
-  name: string;
-  monthly: number;
-  yearly: number;
-  img: string;
-}
-
 export default function Home() {
   const [activeStep, setActiveStep] = useState(1);
   const [isYearly, setIsYearly] = useState<boolean>(true);
-  type Addon = { name: string; description: string; monthly: number; yearly: number };
-  type FormData = { name: string; email: string; phoneNumber: string; plan: any; addOns: Addon[] };
-
   
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phoneNumber: "",
-    plan: {},
+     plan: {
+    name: "",
+    monthly: 0,
+    yearly: 0,
+    img: "",
+  },
     addOns: [],
   });
   const [errors, setErrors] = useState<FormErrors>({
@@ -64,7 +60,7 @@ export default function Home() {
     }
 
     if (activeStep === 2) {
-      if (Object.keys(formData.plan).length === 0) {
+      if (!formData.plan?.name) {
         newErrors.plan = "Please select a plan";
         isValid = false;
       }
@@ -95,7 +91,6 @@ export default function Home() {
     <div className="h-[100vh] bg-[#eef5ff] flex lg:items-center lg:justify-center">
       <div className="lg:bg-white w-full lg:w-[55%] flex flex-col lg:flex-row h-[70%] lg:p-[1rem] lg:rounded-lg">
         <Sidebar
-          setActiveStep={setActiveStep}
           activeStep={activeStep}
         />
         {activeStep === 1 && (
@@ -137,7 +132,7 @@ export default function Home() {
           />
         )}
         {activeStep === 0 && (
-          <Confirm setActiveStep={setActiveStep} activeStep={activeStep} />
+          <Confirm/>
         )}
       </div>
     </div>

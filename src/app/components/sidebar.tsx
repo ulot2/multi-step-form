@@ -21,10 +21,9 @@ const stepsArray = [
 
 type Props = {
   activeStep: number;
-  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const Sidebar = ({ setActiveStep, activeStep }: Props) => {
+export const Sidebar = ({activeStep }: Props) => {
   return (
     <div className='relative lg:static bg-[url("/images/bg-sidebar-mobile.svg")] lg:bg-[url("/images/bg-sidebar-desktop.svg")] bg-contain bg-cover flex lg:flex-col gap-[5%] justify-center lg:justify-start items-center lg:items-start lg:gap-[0] lg:h-[100%] h-[200px] w-full lg:w-[27%] lg:rounded-lg p-[1.5rem]'>
       {stepsArray.map((step) => (

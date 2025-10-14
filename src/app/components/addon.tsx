@@ -1,5 +1,6 @@
 import React from "react";
 import { NextButton, PrevButton } from "../ui/button";
+import type { FormData } from "../types/form";
 
 const addOns = [
   {
@@ -21,21 +22,6 @@ const addOns = [
     yearly: 20,
   },
 ];
-
-type Addon = {
-  name: string;
-  description: string;
-  monthly: number;
-  yearly: number;
-}
-
-type FormData = {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  plan: any;
-  addOns: Addon[];
-}
 
 interface Props {
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;

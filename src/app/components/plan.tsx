@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ToggleSwitch } from "../ui/ToggleSwitch";
 import { NextButton, PrevButton } from "../ui/button";
+import type { PlanTypes } from "../types/form";
 
 const plans = [
   {
@@ -25,13 +26,6 @@ const plans = [
   },
 ];
 
-type PlanType = {
-  name: string;
-  monthly: number;
-  yearly: number;
-  img: string;
-};
-
 type Errors = {
   plan?: string;
 };
@@ -41,8 +35,8 @@ type Props = {
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   isYearly: boolean;
   setIsYearly: React.Dispatch<React.SetStateAction<boolean>>;
-  selectedPlan: Partial<PlanType>;
-  handlePlanSelect: (plan: PlanType) => void;
+  selectedPlan?: PlanTypes;
+  handlePlanSelect: (plan: PlanTypes) => void;
   errors: Errors;
   handleNextStep: () => void;
 };
@@ -86,7 +80,7 @@ export const Plan = ({
                         type="radio"
                         name="planType"
                         id={plan.name}
-                        checked={selectedPlan.name === plan.name}
+                        checked={selectedPlan?.name === plan.name}
                         onChange={() => handlePlanSelect(plan)}
                       />
 

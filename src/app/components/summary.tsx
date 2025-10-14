@@ -1,5 +1,6 @@
 import React from "react";
 import { ConfirmButton, PrevButton } from "../ui/button";
+import type { PlanTypes } from "../types/form";
 
 type Addon = {
   name: string;
@@ -12,7 +13,7 @@ type Props = {
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   activeStep: number;
   isYearly: boolean;
-  selectedPlan: any;
+  selectedPlan: PlanTypes;
   selectedAddOn: Addon[];
 };
 

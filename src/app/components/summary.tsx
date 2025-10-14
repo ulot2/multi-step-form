@@ -24,7 +24,7 @@ export const Summary = ({
   selectedAddOn,
 }: Props) => {
   return (
-    <div className="w-[70%] pt-7 px-10">
+    <div className="lg:w-[70%] pt-7 px-10 bg-white rounded-lg lg:rounded-none top-[9rem] left-[1rem] right-[1rem] lg:m-[0] absolute lg:static">
       <h1 className="text-[#02295a] font-bold text-2xl">Finishing up</h1>
       <p className="text-[#9699ab] text-[13px] mt-[0.2rem] mb-[1rem]">
         Double-check everything looks OK before confirming

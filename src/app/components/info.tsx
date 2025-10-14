@@ -21,7 +21,7 @@ export const Info = ({
     
 
   return (
-    <div className="w-[70%] pt-7 px-10" id="info">
+    <div className="lg:w-[70%] pt-7 px-10 bg-white rounded-lg lg:rounded-none top-[9rem] left-[1rem] right-[1rem] lg:m-[0] absolute lg:static">
       <h1 className="text-[#02295a] font-bold text-2xl">Personal info</h1>
       <p className="text-[#9699ab] text-[13px] mt-[0.2rem] mb-[1rem]">
         Please provide your name, email address, and phone number
@@ -93,7 +93,6 @@ export const Info = ({
           <NextButton handleNextStep={handleNextStep}
           />
         </div>
-        {/* <button onClick={validateAndProceed}>Next</button> */}
       </div>
     </div>
   );

@@ -92,8 +92,8 @@ export default function Home() {
   };
 
   return (
-    <div className="h-[100vh] bg-[#eef5ff] flex items-center justify-center">
-      <div className="bg-white w-[55%] flex h-[70%] p-[1rem] rounded-lg">
+    <div className="h-[100vh] bg-[#eef5ff] flex lg:items-center lg:justify-center">
+      <div className="lg:bg-white w-full lg:w-[55%] flex flex-col lg:flex-row h-[70%] lg:p-[1rem] lg:rounded-lg">
         <Sidebar
           setActiveStep={setActiveStep}
           activeStep={activeStep}

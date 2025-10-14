@@ -49,7 +49,7 @@ interface Props {
 export const Addon = ({ setActiveStep, activeStep, isYearly, formData, setFormData, handleNextStep}: Props) => {
 
   return (
-    <div className="w-[70%] pt-7 px-10">
+    <div className="lg:w-[70%] pt-7 px-10 bg-white rounded-lg lg:rounded-none top-[9rem] left-[1rem] right-[1rem] lg:m-[0] absolute lg:static">
       <h1 className="text-[#02295a] font-bold text-2xl">Pick add-ons</h1>
       <p className="text-[#9699ab] text-[13px] mt-[0.2rem] mb-[1rem]">
         Add-ons help enhance your gaming experience
